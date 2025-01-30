@@ -26,12 +26,12 @@ class Room:
 
     def get_details(self):
         print("You are now in: " + (self.name))
-        print("---------------------------------------")
+        print("--------------------------------------------------------------")
         print(self.description)
         for direction in self.linked_rooms:
             room = self.linked_rooms[direction]
             print("The " + room.get_name()+ " is "+direction)
-        print("---------------------------------------")
+        print("--------------------------------------------------------------")
 
     def move(self, direction):
         if direction in self.linked_rooms:
