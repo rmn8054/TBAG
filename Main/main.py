@@ -1,4 +1,5 @@
 from room import Room
+from character import Enemy
 
 entrance = Room("Entrance")
 upstairs = Room("Upstairs")
@@ -26,6 +27,11 @@ bedroom.link_room(upstairs, "east")
 bathroom.link_room(upstairs, "south")
 garden.link_room(entrance, "south")
 
+zombie = Enemy("Zombie", "A zombie with a taste for brains")
+zombie.set_conversation("*Gargling and groaning noises*")
+zombie.set_weakness("Shovel")
+garden.set_character(zombie)
+
 entrance.set_description("The wooden floor beneath your feet is rotten, the walls torn to shreds.")
 upstairs.set_description("The stairs creak loudly with every step as you walk up them. At the top there are corridors leading to each room")
 living_room.set_description("The living room is filled with what was once luxury furniture, now left worthless. The room has a faint scent of smoke from the fireplace.")
@@ -37,6 +43,23 @@ bathroom.set_description("A filthy bathroom with stains all over the walls and a
 garden.set_description("An overgrown and muddy garden with tall wooden fences surrounding it.")
 
 
+current_room = entrance
+while True:
+    print("\n")
+    current_room.get_details()
+
+    inhabitant = current_room.get_character()
+    if inhabitant is not None:
+        inhabitant.describe()
+
+    command = input ("> ")
+    current_room = current_room.move(command)
+
+
+
+
+
+'''
 print("Welcome to my game: Zombie Mansion")
 print("---------------------------------------")
 
@@ -84,3 +107,4 @@ while True:
         break
     else:
         print("Please enter a valid choice.")
+'''
