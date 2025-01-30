@@ -5,6 +5,7 @@ class Room:
         self.name = room_name
         self.description = None
         self.linked_rooms = {}
+        self.character = None
 
     # creating getter and setter
     def get_description (self):
@@ -31,3 +32,20 @@ class Room:
             room = self.linked_rooms[direction]
             print("The " + room.get_name()+ " is "+direction)
         print("---------------------------------------")
+
+    def move(self, direction):
+        if direction in self.linked_rooms:
+            
+            return self.linked_rooms[direction]
+        
+        else:
+
+            print("You cant go that way.")
+
+            return self
+        
+    def set_character(self, new_character):
+        self.character = new_character
+    
+    def get_character(self):
+        return self.character
