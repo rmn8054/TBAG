@@ -46,5 +46,5 @@ class Enemy(Character):
             print("You kill " + self.name + " with the " + combat_item)
             return True
         else:
-            print(self.name + " eats your brains. You died.")
+            print(self.name + " is unaffected by your attack. You died.")
             return False
